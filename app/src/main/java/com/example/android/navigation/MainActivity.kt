@@ -19,6 +19,10 @@ package com.example.android.navigation
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
 import com.example.android.navigation.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -26,5 +30,22 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         @Suppress("UNUSED_VARIABLE")
         val binding = DataBindingUtil.setContentView<ActivityMainBinding>(this, R.layout.activity_main)
+        val navController = this.findNavController(R.id.myNavHostFragment)
+        NavigationUI.setupActionBarWithNavController(this, navController)
+        /*
+        By calling this method, the title in the action bar will automatically be updated when the destination changes
+        (assuming there is a valid label).
+        The start destination of your navigation graph is considered the only top level destination. On all other destinations,
+        the ActionBar will show the Up button. Call NavController.navigateUp() to handle the Up button.
+         */
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        /*
+        Finally, we need to have the Activity handle the navigateUp action from our Activity. To do this we override
+        onSupportNavigateUp, find the nav controller, and then we call navigateUp().
+         */
+        val navController = this.findNavController(R.id.myNavHostFragment)
+        return navController.navigateUp()
     }
 }
