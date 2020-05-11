@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--
+    We then need to do the same thing for the slide_in_left animation. We start by creating the file, and get an empty
+    animation set. We then need to add a translate animation in there, going from -100% off screen in the X axis to 0%
+    offscreen in the X axis. Let’s do this one with a short duration. For the Y axis, we’ll be at 0 (onscreen) at the start
+     and end of the animation.
+    -->
+    <translate
+        android:fromXDelta="-100%"
+        android:toXDelta="0%"
+        android:fromYDelta="0%"
+        android:toYDelta="0%"
+        android:duration="@android:integer/config_shortAnimTime" />
+</set>
